@@ -18,6 +18,9 @@ while True:
             break
 
         length=int(password_length)
+        if length< 8:
+            print("Please enter a length of at least 8 characters")
+        
         new_password = generate_password(length)
         print(f"Your password:{new_password}")
 
