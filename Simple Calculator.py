@@ -47,7 +47,7 @@ def main():
 #Getting user's input
     while True:
         num_1 = get_number("Please enter your first number: ")
-        op_symbol = input("Please enter your operation (+,-,* or /): ")
+        op_symbol = input("Please enter your operation \nAvailable operations: \n+ Add \n- Subtract \n* Multiply \n/ Divide \n% Modulo \n^ power ")
         calculation_function = operations.get(op_symbol)
         num_2 = get_number("Please enter your second number: ")
 
@@ -58,7 +58,7 @@ def main():
                 result = calculation_function(num_1, num_2)
                 print(f"\nresult: {num_1} {op_symbol} {num_2}= {result}")
             except ZeroDivisionError as e:
-                print(f"e {e}")
+                print(f"error:  {e}")
 
         else:
             print("\nInvalid operator please use (+,-,* or /) ")
