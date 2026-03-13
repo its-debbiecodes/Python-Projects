@@ -3,9 +3,9 @@ import string
 import secrets
 
 #function for generating the password
-def generate_password(long):
+def generate_password(length):
     all_characters=string.ascii_letters+string.digits+string.punctuation
-    password="".join(secrets.choice(all_characters) for _ in range(long))
+    password="".join(secrets.choice(all_characters) for _ in range(length))
     return password
 
 #users input and results
@@ -32,6 +32,6 @@ while True:
 
 #generate new password option for user
     generate_new=input("\nWould you like to generate a new password?(y/n): ".lower())
-    if generate_new not in["y","Yes"]:
+    if generate_new not in["y","yes"]:
         print("Stay safe.")
         break
