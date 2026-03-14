@@ -1,5 +1,9 @@
 
+import os
 name = input("Please enter your name: ").title()
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def show_menu():
     print("-----YOUR TO DO LISTS-----")
     print(f"Hi {name}, what would you like to do?!")
@@ -10,23 +14,23 @@ def show_menu():
     print("5. Exit".capitalize())
 
 def main():
-    tasks=[
-
-    ]
+    tasks=[]
 
     while True:
+        clear_screen()
         show_menu()
         choice = input("Please enter your choice (1-5): ")
         if choice == "1":
+            clear_screen()
             print(f"\n{name} task".title())
 
             if not tasks:
                 print("Your tasks list is empty!")
-                continue
 
             else:
                 for index, item in enumerate(tasks, start=1):
                     print(f"{index}. {item}")
+                    input("Press enter to go back to main menu...")
 
         elif choice == "2":
             new_task = input("Please enter a new task: ")
@@ -39,7 +43,6 @@ def main():
         elif choice == "3":
             if not tasks:
                 print("Your tasks list is empty!")
-                continue
 
             for index, item in enumerate(tasks, start=1):
                 print(f"{index}. {item}")
@@ -55,7 +58,6 @@ def main():
         elif choice == "4":
             if not tasks:
                 print("Your tasks list is empty!")
-                continue
 
             try:
                 task_num = int(input("Please enter the number of task you would like to mark as done: "))
@@ -75,11 +77,6 @@ def main():
 
         else:
             print("Please enter a valid number (1-4)")
-            continue
-
-        again=input("Do you want to continue? (y/n): ").lower().strip()
-        if again not in ["y","yes"]:
-            print("Thank you for your time!")
             break
 
 if __name__ == "__main__":
