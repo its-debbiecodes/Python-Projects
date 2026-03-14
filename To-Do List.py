@@ -6,7 +6,8 @@ def show_menu():
     print("1. View Tasks".capitalize())
     print("2. Add Tasks".capitalize())
     print("3. Remove Tasks".capitalize())
-    print("4. Exit".capitalize())
+    print("4. Mark as done ✅".capitalize())
+    print("5. Exit".capitalize())
 
 def main():
     tasks=[
@@ -15,9 +16,9 @@ def main():
 
     while True:
         show_menu()
-        choice = input("Please enter your choice (1-4): ")
+        choice = input("Please enter your choice (1-5): ")
         if choice == "1":
-            print("\nYour task".title())
+            print(f"\n{name} task".title())
 
             if not tasks:
                 print("Your tasks list is empty!")
@@ -51,8 +52,24 @@ def main():
             except (ValueError, IndexError) as e:
                 print(f"{e}:Please enter a valid number from your tasks list")
 
-
         elif choice == "4":
+            if not tasks:
+                print("Your tasks list is empty!")
+                continue
+
+            try:
+                task_num = int(input("Please enter the number of task you would like to mark as done: "))
+                if "✅" not in tasks[task_num-1]:
+                    tasks[task_num - 1]= tasks[task_num-1] + "✅"
+                    print(f"{tasks[task_num-1]} marked as done in your tasks list")
+
+                else:
+                    print(f" {tasks[task_num-1]} Already marked as done in your tasks list")
+
+            except (ValueError, IndexError) as e:
+                print(f"{e}:Please enter a valid number from your tasks list")
+
+        elif choice == "5":
             print("Goodbye!")
             break
 
