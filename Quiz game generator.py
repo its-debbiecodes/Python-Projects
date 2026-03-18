@@ -41,9 +41,41 @@ def quiz_data():
         if choice == "1":
             general_knowledge=[{"q":"1. What is the capital of France?",
                                 "o":["\nMadrid", "\nBerlin", "\nParis", "\nRome"],
+                                "a": 2},
+
+                               {"q": "2. Which planet is known as the Red Planet?",
+                                "o": ["\nVenus", "\nMars", "\nJupiter", "\nSaturn"],
+                                "a": 1},
+
+                               {"q": "3. Who wrote Romeo and Juliet?",
+                                "o": ["\nCharles Dickens", "\nWilliam Shakespeare", "\nJane Austen", "\nMark Twain"],
+                                "a": 1},
+
+                               {"q": "4. What is the largest ocean on Earth?",
+                                "o": ["\nPacific Ocean", "\nIndian Ocean", "\nAtlantic Ocean", "\nArctic Ocean"],
+                                "a": 0},
+
+                               {"q": "5. How many continents are there?",
+                                "o": ["\n5", "\n6", "\n7", "\n8"],
+                                "a": 2},
+
+                               {"q": "6. What is the boiling point of water?",
+                                "o": ["\n50°C", "\n100°C", "\n150°C", "\n200°C"],
+                                "a": 1},
+
+                               {"q": "7. Which country is famous for the pyramids?",
+                                "o": ["\nMexico", "\nPeru", "\nEgypt", "\nIndia"],
+                                "a": 2},
+
+                               {"q": "8. What gas do humans need to breathe?",
+                                "o": ["\nCarbon dioxide", "\nOxygen", "\nNitrogen", "\nHelium"],
+                                "a": 1},
+
+                               {"q": "9. What is the currency of the UK?",
+                                "o": ["\nEuro", "\nDollar", "\nYen", "\nPound"],
                                 "a": 3},
 
-                               {"q": "1. What is the capital of France?",
-                                "o": ["\nMadrid", "\nBerlin", "\nParis", "\nRome"],
+                               {"q": "10. What is H2O commonly known as?",
+                                "o": ["\nSalt", "\nWater", "\nOxygen", "\nHydrogen"],
                                 "a": 3},
                                ]
