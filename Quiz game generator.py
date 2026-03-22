@@ -78,11 +78,11 @@ def quiz_data():
 
         it_and_computer = [{"q": "1. What does CPU stand for?",
                               "o": ["\nCentral Processing Unit", "\nCentral Process Unit", "\nComputer Personal Unit", "\nAll of the above"],
-                              "a": 2},
+                              "a": 0},
 
                              {"q": "2. What does RAM do?",
                               "o": ["\nStores files permanently", "\nRuns the operating system only", "\nTemporarily stores data for quick access", "\nConnects to the internet"],
-                              "a": 1},
+                              "a": 2},
 
                              {"q": "3. Which is an operating system?",
                               "o": ["\nMicrosoft Word", "\nWindows", "\nChrome", "\nExcel"],
@@ -90,7 +90,7 @@ def quiz_data():
 
                              {"q": "4. What does HTTP stand for?",
                               "o": ["\nHyper Transfer Text Protocol", "\nHigh Transfer Text Protocol", "\nHyperText Transmission Process", "\nHyperText Transfer Protocol"],
-                              "a": 0},
+                              "a": 3},
 
                              {"q": "5. What device connects you to the internet?",
                               "o": ["\nPrinter", "\nMonitor", "\nRouter", "\nKeyboard"],
@@ -98,11 +98,11 @@ def quiz_data():
 
                              {"q": "6. What is a virus in computing?",
                               "o": ["\nHardware damage", "\nA type of software bug", "\nMalicious software", "\nInternet connection issue"],
-                              "a": 1},
+                              "a": 2},
 
                              {"q": "7. What does “IP” in IP address stand for?",
                               "o": ["\nInternet Process", "\nInternal Protocol", "\nInformation Process", "\nInternet Protocol"],
-                              "a": 2},
+                              "a": 1},
 
                              {"q": "8. What is software?",
                               "o": ["\nPhysical computer parts", "\nPrograms and applications", "\nInternet cables", "\nScreens and monitors"],
@@ -110,7 +110,7 @@ def quiz_data():
 
                              {"q": "9. Which of these is a web browser?",
                               "o": ["\nLinux", "\nGoogle Chrome", "\nWindows", "\nAndroid"],
-                              "a": 3},
+                              "a": 1},
 
                              {"q": "10. What is troubleshooting?",
                               "o": ["\nInstalling apps", "\nFixing problems in a system", "\nWriting code", "\nDesigning websites"],
@@ -119,48 +119,43 @@ def quiz_data():
 
         science = [{"q": "1. What is the chemical symbol for gold??",
                             "o": ["\nAg", "\nAu", "\nFe", "\nGo"],
-                            "a": 2},
+                            "a": 1},
 
                            {"q": "2. What planet is closest to the sun?",
                             "o": ["\nVenus", "\nMercury", "\nEarth", "\nMars"],
                             "a": 1},
 
-                           {"q": "3. Which is an operating system?",
-                            "o": ["\nMicrosoft Word", "\nWindows", "\nChrome", "\nExcel"],
+                           {"q": "3. What part of the body pumps blood?",
+                            "o": ["\nBrain", "\nLiver", "\nHeart", "\nLungs"],
+                            "a": 2},
+
+                           {"q": "4. What gas do plants absorb?",
+                            "o": ["\nOxygen", "\nCarbon dioxide", "\nNitrogen", "\nHydrogen"],
                             "a": 1},
 
-                           {"q": "4. What does HTTP stand for?",
-                            "o": ["\nHyper Transfer Text Protocol", "\nHigh Transfer Text Protocol",
-                                  "\nHyperText Transmission Process", "\nHyperText Transfer Protocol"],
+                           {"q": "5. What force pulls objects to Earth?",
+                            "o": ["\nGravity", "\nMagnetism", "\nEnergy", "\nPressure"],
                             "a": 0},
 
-                           {"q": "5. What device connects you to the internet?",
-                            "o": ["\nPrinter", "\nMonitor", "\nRouter", "\nKeyboard"],
+                           {"q": "6. What is the freezing point of water?",
+                            "o": ["\n0°C", "\n32°C", "\n100°C", "\n-10°C"],
+                            "a": 0},
+
+                           {"q": "7. What is the center of an atom called?",
+                            "o": ["\nElectron", "\nProton", "\nNucleus", "\nNeutron"],
                             "a": 2},
 
-                           {"q": "6. What is a virus in computing?",
-                            "o": ["\nHardware damage", "\nA type of software bug", "\nMalicious software",
-                                  "\nInternet connection issue"],
+                           {"q": "8. What type of energy is from the sun?",
+                            "o": ["\nWind energy", "\nSolar energy", "\nNuclear energy","\nChemical energy"],
                             "a": 1},
 
-                           {"q": "7. What does “IP” in IP address stand for?",
-                            "o": ["\nInternet Process", "\nInternal Protocol", "\nInformation Process",
-                                  "\nInternet Protocol"],
-                            "a": 2},
-
-                           {"q": "8. What is software?",
-                            "o": ["\nPhysical computer parts", "\nPrograms and applications", "\nInternet cables",
-                                  "\nScreens and monitors"],
+                           {"q": "9. What organ helps you breathe?",
+                            "o": ["\nHeart", "\nLungs", "\nBrain", "\nKidney"],
                             "a": 1},
 
-                           {"q": "9. Which of these is a web browser?",
-                            "o": ["\nLinux", "\nGoogle Chrome", "\nWindows", "\nAndroid"],
-                            "a": 3},
-
-                           {"q": "10. What is troubleshooting?",
-                            "o": ["\nInstalling apps", "\nFixing problems in a system", "\nWriting code",
-                                  "\nDesigning websites"],
-                            "a": 1}
+                           {"q": "10. What is the largest organ in the human body?",
+                            "o": ["\nLiver", "\nBrain", "\nSkin", "\nHeart"],
+                            "a": 2}
                            ]
 
         def run_quiz(subject,question_block):
@@ -194,6 +189,7 @@ def quiz_data():
             return score
 
 
+        def main():
 
 
 
