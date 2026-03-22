@@ -1,41 +1,11 @@
 
+#IMPORT FILES
 import json
 import os
+from json import JSONDecodeError
 
-FILENAME= "My scores.json"
-name= input("Enter your name: ")
-
-def save_scores(scores):
-    with open("My scores.json", "w") as file:
-        json.dump(scores, file)
-
-
-def load_highest_scores():
-    if os.path.exists(FILENAME):
-        return json.load(open(FILENAME))
-    try:
-        with open("My scores.json", "r") as file:
-            scores = json.load(file)
-            return scores
-    except FileNotFoundError:
-        return {}
-
-
-def subject_menu():
-    print("---the quiz game generator".upper().center(50,"-"))
-    print(f"Hi {name}, welcome to the Quiz Game Generator")
-    print("What subject would you like to do")
-    print("📚 1. General Knowledge")
-    print("💻 2. IT & Computers")
-    print("🧠 3. Science")
-    print("🪂 4. Exit")
-
-def quiz_data():
-    scores=load_highest_scores()
-    print(f"Your highest score is {load_highest_scores()}:")
-
-    while True:
-        general_knowledge=[{"q":"1. What is the capital of France?",
+#DICTIONARIES FOR SUBJECTS
+general_knowledge=[{"q":"1. What is the capital of France?",
                             "o":["\nMadrid", "\nBerlin", "\nParis", "\nRome"],
                             "a": 2},
 
@@ -74,9 +44,9 @@ def quiz_data():
                            {"q": "10. What is H2O commonly known as?",
                             "o": ["\nSalt", "\nWater", "\nOxygen", "\nHydrogen"],
                             "a": 1}
-                            ],
+                            ]
 
-        it_and_computer = [{"q": "1. What does CPU stand for?",
+it_and_computer = [{"q": "1. What does CPU stand for?",
                               "o": ["\nCentral Processing Unit", "\nCentral Process Unit", "\nComputer Personal Unit", "\nAll of the above"],
                               "a": 0},
 
@@ -115,9 +85,9 @@ def quiz_data():
                              {"q": "10. What is troubleshooting?",
                               "o": ["\nInstalling apps", "\nFixing problems in a system", "\nWriting code", "\nDesigning websites"],
                               "a": 1}
-                             ],
+                             ]
 
-        science = [{"q": "1. What is the chemical symbol for gold??",
+science = [{"q": "1. What is the chemical symbol for gold??",
                             "o": ["\nAg", "\nAu", "\nFe", "\nGo"],
                             "a": 1},
 
@@ -158,39 +128,111 @@ def quiz_data():
                             "a": 2}
                            ]
 
-        def run_quiz(subject,question_block):
-            print(f"--- Welcome to {subject} quiz game")
+#RUN QUIZ FUNCTION
+def run_quiz(subject, question_block):
+    print(f"--- Welcome to {subject} quiz game")
 
-            score=0
+    score = 0
 
-            for block in question_block:
-                print(f"\n{block['q']}")
+    for block in question_block:
+        print(f"\n{block['q']}")
 
-                for i, o in enumerate(block["o"]):
-                    letter= chr(65+i)
-                    print(f"{letter}.{o.strip()} ")
+        for i, o in enumerate(block["o"]):
+            letter = chr(65 + i)
+            print(f"{letter}.{o.strip()} ")
+
+        user_input = input("What is the right option (A,B,C or D): ").upper().strip()
+        if len(user_input) == 1 and "A" <= user_input <= "D":
+            user_index = ord(user_input) - 65
+            if user_index == block["a"]:
+                print("✅ Correct!")
+                score += 1
+
+            else:
+                correct_letter = chr(65 + block["a"])
+                print(f"❌ That's wrong, Correct answer is {correct_letter}!")
+
+        else:
+            print("INVALID INPUT, COUNTED AS WRONG!")
+
+    print(f"\nQuiz finished!\nYour final score is: {score}/{len(question_block)}")
+    return score
+
+#JSON FILE BREAKDOWN
+FILENAME= "My scores.json"
+name= input("Enter your name: ")
+
+def save_scores(scores):
+    with open("My scores.json", "w") as file:
+        json.dump(scores, file)
 
 
-                user_input = input("What is the right option (A,B,C or D): ").upper().strip()
-                if len(user_input)==1 and "A"<= user_input<="D":
-                    user_index= ord(user_input)-65
-                    if user_index == question_block["a"]:
-                        print("✅ Correct!")
-                        score+=1
+def load_highest_scores():
+    if os.path.exists(FILENAME):
+        return {}
+    try:
+        with open(FILENAME, "r") as file:
+            return json.load(file)
 
-                    else:
-                        correct_letter = chr(65+question_block["a"])
-                        print(f"❌ That's wrong, Correct answer is {correct_letter}!")
+    except FileNotFoundError, JSONDecodeError:
+        return {}
 
-                else:
-                    print("INVALID INPUT, COUNTED AS WRONG!")
+#QUIZ GAME MENU
+def subject_menu():
+    print("---the quiz game generator".upper().center(50,"-"))
+    print(f"Hi {name}, welcome to the Quiz Game Generator")
+    print("What subject would you like to do")
+    print("📚 1. General Knowledge")
+    print("💻 2. IT & Computers")
+    print("🧠 3. Science")
+    print("🪂 4. Exit")
 
-            print(f"\nQuiz finished!\nYour final score is: {score}/{len(question_block)}")
-            return score
+#MAIN GAME DATA
+def quiz_data():
+    all_scores=load_highest_scores()
+    print(f"Your highest score is {load_highest_scores()}:")
+
+    all_scores = load_highest_scores()
+    print("---- High score board----".upper().center(50,"-"))
+    print(f"General Knowledge: {all_scores.get('General Knowledge', 0)}")
+    print(f"IT & Computers: {all_scores.get('IT & Computers', 0)}")
+    print(f"Science: {all_scores.get('Science', 0)}")
+
+    while True:
+        subject_menu()
+        choice= input("\nPick a quiz subject (1-4: ")
+
+        if choice == "1":
+            current_score=run_quiz("General Knowledge", general_knowledge)
+            if current_score > all_scores.get("General Knowledge", 0):
+                print(f"🌟 Your new high score is {current_score}.")
+                all_scores["General Knowledge"] = current_score
+                save_scores(all_scores)
 
 
-        def main():
+        elif choice == "2":
+            current_score=run_quiz("IT & Computers", it_and_computer)
+            if current_score > all_scores.get("IT & Computers", 0):
+                print(f"🌟 Your new high score is {current_score}.")
+                all_scores["IT & Computers"] = current_score
+                save_scores(all_scores)
 
+        elif choice == "3":
+            current_score=run_quiz("Science", science)
+            if current_score > all_scores.get("Science", 0):
+                print(f"🌟 Your new high score is {current_score}.")
+                all_scores["Science"] = current_score
+                save_scores(all_scores)
 
+        elif choice == "4":
+            print("Thank you for using Quiz game!")
+            break
 
+        else:
+            print("INVALID INPUT, Choose an option (1-4)!")
 
+            print("Press enter to continue...")
+
+#FINAL
+if __name__ == "__main__":
+    quiz_data()
