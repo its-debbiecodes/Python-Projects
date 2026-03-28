@@ -64,12 +64,10 @@ def main():
             print("\nInvalid operator please use (+,-,* or /) ")
 
 #play again? function for user
-        play_again = input("\nDo you wish to continue? (y/n): ")
-        if play_again != "y" and play_again != "yes":
+        run_again = input("\nDo you wish to continue? (y/n): ")
+        if run_again != "y" and run_again != "yes":
             print("Thank you for using the Simple Calculator!")
             break
 
 if __name__ == "__main__":
     main()
-
-
